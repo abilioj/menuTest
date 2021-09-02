@@ -6,13 +6,12 @@
 package br.com.menuTest.bean;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -48,29 +47,27 @@ public class Tgmenu implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @Column(nullable = false)
+    @Basic(optional = false)   
+    @Column(name = "idmenu")
     private Integer idmenu;
     
     @Basic(optional = false)
-    @Column(nullable = false)
+    @Column(name = "ativo")
     private short ativo;
     
-    @Column(name = "class", length = 255)
+    @Basic(optional = false)   
+    @Column(name = "descricao")
+    private String descricao;
+    
+    @Column(name = "class")
     private String class1;
     
-    @Basic(optional = false)
-    @Column(nullable = false, length = 255)
-    private String descricao;
-    @OneToMany(mappedBy = "fkmenu")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkmenu")
     private List<Tgmenu> tgmenuList;
     
     @JoinColumn(name = "fkmenu", referencedColumnName = "idmenu")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Tgmenu fkmenu;
-    
-    @OneToMany(mappedBy = "fkmenu", fetch = FetchType.LAZY)
-    private List<Tgmenu> children = new ArrayList<>();
     
     @JoinColumn(name = "rotas", referencedColumnName = "idrota")
     @ManyToOne
@@ -108,20 +105,20 @@ public class Tgmenu implements Serializable {
         this.ativo = ativo;
     }
 
-    public String getClass1() {
-        return class1;
-    }
-
-    public void setClass1(String class1) {
-        this.class1 = class1;
-    }
-
     public String getDescricao() {
         return descricao;
     }
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public String getclass() {
+        return class1;
+    }
+
+    public void setClass1(String class1) {
+        this.class1 = class1;
     }
 
     @XmlTransient
@@ -180,7 +177,7 @@ public class Tgmenu implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Tgmenu[ idmenu=" + idmenu + " ]";
+        return "entity.Tgmenu[ idmenu=" + idmenu + " ]";
     }
-
+    
 }

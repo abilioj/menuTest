@@ -16,6 +16,7 @@ public class TgmenuService {
 	private TgmenuRepository repo;
 
 	public List<Tgmenu> findAll(){
-		return repo.findAll();
+//		return repo.findAll();
+		return repo.findMenuR();
 	}
 }
