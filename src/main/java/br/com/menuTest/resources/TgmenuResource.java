@@ -23,7 +23,7 @@ public class TgmenuResource {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Menu>> findAll() {
-		List<Tgmenu> tgmenus = service.findAll();
+		List<Tgmenu> tgmenus = service.findMenuR();
         List<Menu> Menu_list = new ArrayList<>();
         //todos os menus
 //        Menu HeaderMenu = new Menu();
@@ -48,6 +48,12 @@ public class TgmenuResource {
 		return ResponseEntity.ok().body(Menu_list);
 	}
 
+	@RequestMapping(value = "/menulst",method = RequestMethod.GET)
+	public ResponseEntity<List<Tgmenu>> findMenu() {
+		List<Tgmenu> tgmenus = service.findAll();
+		return ResponseEntity.ok().body(tgmenus);
+	}
+	
     private Menu getSubItem(Tgmenu tgmenu) {
         Menu menu = new Menu();
         menu.setHeader(false);

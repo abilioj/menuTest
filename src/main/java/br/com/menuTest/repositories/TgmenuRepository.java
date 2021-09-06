@@ -13,11 +13,10 @@ import br.com.menuTest.bean.Tgmenu;
 @Repository
 public interface TgmenuRepository  extends JpaRepository<Tgmenu,Integer>{
 
-//	 @Query("select distinct t from Tgmenu t " +
-//	            "left join fetch t.fkmenu tt " +
-//	            "left join fetch t.children ch " +
-//	            "where tt is null")
-//	 List<Tgmenu> findAll();
+	 @Query("select t.idmenu,t.ativo,t.descricao,r.href,t.class1"
+	 		+ " from Tgmenu t, Tgrotas r"
+	 		+ " where r.idrota=t.rotas ")
+	 List<Tgmenu> findAll();
 
 	@Transactional(readOnly = true)
 	 @Query("select distinct t from Tgmenu t " +
