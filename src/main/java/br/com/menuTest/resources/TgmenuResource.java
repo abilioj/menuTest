@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.menuTest.bean.Tgmenu;
+import br.com.menuTest.domain.Tgmenu;
 import br.com.menuTest.dto.menu.Icon;
 import br.com.menuTest.dto.menu.Menu;
 import br.com.menuTest.services.TgmenuService;
@@ -63,6 +63,7 @@ public class TgmenuResource {
         icon.setClass(tgmenu.getclass());
         icon.setElement("span");
         menu.setIcon(icon);
+        menu.setIconClass(tgmenu.getclass());
         menu.setTitle(tgmenu.getDescricao());
 
         for (int x = 0; x < tgmenu.getTgmenuList().size(); x++) {

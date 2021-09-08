@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.menuTest.bean.Tgrotas;
-import br.com.menuTest.bean.dto.TgrotasDTO;
+import br.com.menuTest.domain.Tgrotas;
+import br.com.menuTest.domain.dto.TgrotasDTO;
 import br.com.menuTest.services.TgrotasService;
 
 @RestController

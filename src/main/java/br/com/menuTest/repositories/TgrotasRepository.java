@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import br.com.menuTest.bean.Tgrotas;
+import br.com.menuTest.domain.Tgrotas;
 
 @Repository
 public interface TgrotasRepository extends JpaRepository<Tgrotas,Integer>{

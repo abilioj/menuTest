@@ -1,0 +1,109 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package br.com.menuTest.domain;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+/**
+ *
+ * @author AJF
+ */
+@Entity
+public class Tgibgeuf implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private Integer idtgibgeuf;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private int cod;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 255)
+    private String nome;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idtgibgeuf")
+    private List<Tgibgemesoregiao> tgibgemesoregiaoList;
+
+    public Tgibgeuf() {
+    }
+
+    public Tgibgeuf(Integer idtgibgeuf) {
+        this.idtgibgeuf = idtgibgeuf;
+    }
+
+    public Tgibgeuf(Integer idtgibgeuf, int cod, String nome) {
+        this.idtgibgeuf = idtgibgeuf;
+        this.cod = cod;
+        this.nome = nome;
+    }
+
+    public Integer getIdtgibgeuf() {
+        return idtgibgeuf;
+    }
+
+    public void setIdtgibgeuf(Integer idtgibgeuf) {
+        this.idtgibgeuf = idtgibgeuf;
+    }
+
+    public int getCod() {
+        return cod;
+    }
+
+    public void setCod(int cod) {
+        this.cod = cod;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public List<Tgibgemesoregiao> getTgibgemesoregiaoList() {
+        return tgibgemesoregiaoList;
+    }
+
+    public void setTgibgemesoregiaoList(List<Tgibgemesoregiao> tgibgemesoregiaoList) {
+        this.tgibgemesoregiaoList = tgibgemesoregiaoList;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (idtgibgeuf != null ? idtgibgeuf.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Tgibgeuf)) {
+            return false;
+        }
+        Tgibgeuf other = (Tgibgeuf) object;
+        if ((this.idtgibgeuf == null && other.idtgibgeuf != null) || (this.idtgibgeuf != null && !this.idtgibgeuf.equals(other.idtgibgeuf))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "bean.Tgibgeuf[ idtgibgeuf=" + idtgibgeuf + " ]";
+    }
+
+}

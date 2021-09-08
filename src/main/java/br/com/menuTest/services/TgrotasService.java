@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.menuTest.bean.Tgrotas;
-import br.com.menuTest.bean.dto.TgrotasDTO;
+import br.com.menuTest.domain.Tgrotas;
+import br.com.menuTest.domain.dto.TgrotasDTO;
 import br.com.menuTest.repositories.TgrotasRepository;
 import br.com.menuTest.services.exceptions.ObjectNotFoundException;
 

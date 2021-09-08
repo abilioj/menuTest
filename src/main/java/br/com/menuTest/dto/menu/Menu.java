@@ -12,80 +12,93 @@ public class Menu implements Serializable {
     Boolean hiddenOnCollapse;
     private String title;
     private Icon icon;
+    private String iconClass;
     private List<Menu> child;
     private Badge badge = null;
     private boolean hidden;
     private boolean disabled;
-
-    public Badge getBadge() {
-        return badge;
-    }
-
-    public void setBadge(Badge badge) {
-        this.badge = badge;
-    }
-
-    public boolean isHidden() {
-        return hidden;
-    }
-
-    public void setHidden(boolean hidden) {
-        this.hidden = hidden;
-    }
-
-    public boolean isDisabled() {
-        return disabled;
-    }
-
-    public void setDisabled(boolean disabled) {
-        this.disabled = disabled;
-    }
     
     public String getHref() {
-        return href;
-    }
+		return href;
+	}
+    
+	public void setHref(String href) {
+		this.href = href;
+	}
 
-    public Boolean getHiddenOnCollapse() {
-        return hiddenOnCollapse;
-    }
+	public boolean isHeader() {
+		return header;
+	}
 
-    public void setHiddenOnCollapse(Boolean hiddenOnCollapse) {
-        this.hiddenOnCollapse = hiddenOnCollapse;
-    }
+	public void setHeader(boolean header) {
+		this.header = header;
+	}
 
-    public void setHref(String href) {
-        this.href = href;
-    }
+	public Boolean getHiddenOnCollapse() {
+		return hiddenOnCollapse;
+	}
 
-    public boolean isHeader() {
-        return header;
-    }
+	public void setHiddenOnCollapse(Boolean hiddenOnCollapse) {
+		this.hiddenOnCollapse = hiddenOnCollapse;
+	}
 
-    public void setHeader(boolean header) {
-        this.header = header;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public Icon getIcon() {
+		return icon;
+	}
 
-    public Icon getIcon() {
-        return icon;
-    }
+	public void setIcon(Icon icon) {
+		this.icon = icon;
+	}
 
-    public void setIcon(Icon icon) {
-        this.icon = icon;
-    }
+	public String getIconClass() {
+		return iconClass;
+	}
 
-    public List<Menu> getChild() {
-        return child;
-    }
+	public void setIconClass(String iconClass) {
+		this.iconClass = iconClass;
+	}
 
-    public void addChild(Menu child) {
+	public List<Menu> getChild() {
+		return child;
+	}
+
+	public void setChild(List<Menu> child) {
+		this.child = child;
+	}
+
+	public Badge getBadge() {
+		return badge;
+	}
+
+	public void setBadge(Badge badge) {
+		this.badge = badge;
+	}
+
+	public boolean isHidden() {
+		return hidden;
+	}
+
+	public void setHidden(boolean hidden) {
+		this.hidden = hidden;
+	}
+
+	public boolean isDisabled() {
+		return disabled;
+	}
+
+	public void setDisabled(boolean disabled) {
+		this.disabled = disabled;
+	}
+
+	public void addChild(Menu child) {
         if (this.child == null) {
             this.child = new ArrayList<>();
         }
