@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 @RestController
 public class HomeResource {
+	
 	@GetMapping
     private ResponseEntity<String> index() {
         return ResponseEntity.ok("Bem Vindo a Api Rest.");		

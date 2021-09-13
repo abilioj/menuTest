@@ -21,13 +21,13 @@ public class TgrotasResource {
 	private TgrotasService service;
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<TgrotasDTO> find(@PathVariable Integer id) {
+	private ResponseEntity<TgrotasDTO> find(@PathVariable Integer id) {
 		TgrotasDTO obj = service.fromDTO(service.find(id));
 		return ResponseEntity.ok().body(obj);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Tgrotas>> findALL(){
+	private ResponseEntity<List<Tgrotas>> findALL(){
 		return ResponseEntity.ok().body(service.findAll());
 	}
 	

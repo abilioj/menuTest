@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+//import br.com.menuTest.domain.MenuNew;
 import br.com.menuTest.domain.Tgmenu;
+import br.com.menuTest.domain.Tgrotas;
 import br.com.menuTest.dto.menu.Icon;
 import br.com.menuTest.dto.menu.Menu;
+//import br.com.menuTest.services.MenuNewService;
 import br.com.menuTest.services.TgmenuService;
 
 @RestController
@@ -20,9 +23,11 @@ public class TgmenuResource {
 	
 	@Autowired
 	private TgmenuService service;
+//	@Autowired
+//	private MenuNewService serviceNew;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Menu>> findAll() {
+	private ResponseEntity<List<Menu>> findAll() {
 		List<Tgmenu> tgmenus = service.findMenuR();
         List<Menu> Menu_list = new ArrayList<>();
         //todos os menus
@@ -33,6 +38,19 @@ public class TgmenuResource {
 //        HeaderMenu.setHiddenOnCollapse(true);
 //        HeaderMenu.setTitle("WHOSP .::. Menus");
 //        Menu_list.add(HeaderMenu);
+        Menu menu = new Menu();
+        menu.setDisabled(false);
+        menu.setHeader(false);
+        menu.setHidden(false);
+        menu.setHiddenOnCollapse(true);
+        menu.setTitle("inicio");
+        menu.setHref("/");
+        Icon icon = new Icon();
+        icon.setClass("fa fa-align-justify");
+        icon.setElement("span");
+        menu.setIcon(icon);
+        menu.setIconClass(icon.getclass());
+        Menu_list.add(menu);
         for (int x = 0; x < tgmenus.size(); x++) {
             Menu_list.add(getSubItem(tgmenus.get(x)));
         }
@@ -49,16 +67,22 @@ public class TgmenuResource {
 	}
 
 	@RequestMapping(value = "/menulst",method = RequestMethod.GET)
-	public ResponseEntity<List<Tgmenu>> findMenu() {
+	private ResponseEntity<List<Tgmenu>> findMenu() {
 		List<Tgmenu> tgmenus = service.findAll();
 		return ResponseEntity.ok().body(tgmenus);
 	}
 	
     private Menu getSubItem(Tgmenu tgmenu) {
         Menu menu = new Menu();
+        String iconClass = "fa fa-gg";
         menu.setHeader(false);
         menu.setHref(tgmenu.getRotas().getHref());
         menu.setHiddenOnCollapse(true);
+        
+        if(tgmenu.getclass().equals("")) {
+        	tgmenu.setClass1(iconClass);
+        }
+        
         Icon icon = new Icon();
         icon.setClass(tgmenu.getclass());
         icon.setElement("span");
@@ -77,4 +101,9 @@ public class TgmenuResource {
 
         return menu;
     }
+    
+//    private Tgmenu menuNewToTgmenu(MenuNew obj) {
+//		return null;
+//	}
+    
 }

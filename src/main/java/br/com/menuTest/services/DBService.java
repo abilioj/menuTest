@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.menuTest.domain.Tgmenu;
 import br.com.menuTest.domain.Tgrotas;
-import br.com.menuTest.repositories.TgmenuRepository;
 import br.com.menuTest.repositories.TgrotasRepository;
 
 @Service
@@ -23,14 +22,10 @@ public class DBService {
 	@Autowired
 	private TgrotasRepository tgrotasRepository;
 
-	@Autowired
-	private TgmenuRepository tgmenuRepository;
-
 	public void instantiateTestDatabase() throws ParseException {
 
 		List<Tgmenu> listasMenus = new ArrayList<>();
-		List<Tgrotas> listasRotas = new ArrayList<>();
-		Tgmenu newTgmenu = new Tgmenu(0);
+//		List<Tgrotas> listasRotas = new ArrayList<>();
 
 		Tgrotas r1 = new Tgrotas();
 		r1.setIdrota(0);
@@ -41,31 +36,15 @@ public class DBService {
 		r2.setIdrota(1);
 		r2.setRota(1);
 		r2.setHref("/");
-
-		Tgmenu m1 = new Tgmenu();
-		m1.setAtivo(new Short("0"));
-		m1.setDescricao("Rota");
-		m1.setClass1("fa fa-plus-circle");
-		m1.setRotas(r1);
-		m1.setFkmenu(newTgmenu);
-
-		Tgmenu m2 = new Tgmenu();
-		m2.setAtivo(new Short("0"));
-		m2.setDescricao("novo");
-		m2.setClass1("fa fa-plus-circle");
-		m2.setRotas(r1);
-		m2.setFkmenu(m1);
-
-		listasRotas.add(r1);
-		listasRotas.add(r2);
-
-		listasMenus.add(m1);
-		listasMenus.add(m2);
 		
-		r1.setTgmenuList(listasMenus);
-		m1.setTgmenuList(listasMenus);
+		Tgrotas r3 = new Tgrotas();
+		r3.setIdrota(2);
+		r3.setRota(1);
+		r3.setHref("/user/n");
+
 		
-		tgrotasRepository.saveAll(Arrays.asList(r1, r2));
-		tgmenuRepository.saveAll(Arrays.asList(m1,m2));
+		tgrotasRepository.saveAll(Arrays.asList(r1, r2, r3));
+		
+		System.out.println(listasMenus);
 	}
 }

@@ -99,7 +99,7 @@ public class Tgrotas implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Tgrotas[ idrota=" + idrota + " ]";
+        return "bean.Tgrotas[ idrota=" + idrota + ", href= '"+ href +"' ]";
     }
 
 }

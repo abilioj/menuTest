@@ -13,7 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.xml.bind.annotation.XmlTransient;
+import javax.persistence.Transient;
 
 /**
  *
@@ -29,7 +29,7 @@ public class Tgmenu implements Serializable {
     
     @Basic(optional = false)
     @Column(name = "ativo")
-    private short ativo;
+    private int ativo;
     
     @Basic(optional = false)   
     @Column(name = "descricao")
@@ -38,18 +38,19 @@ public class Tgmenu implements Serializable {
     @Column(name = "class")
     private String class1;
     
+    @Column(nullable = false)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkmenu")
     private List<Tgmenu> tgmenuList;
     
-    @JoinColumn(name = "fkmenu", referencedColumnName = "idmenu")
+    @JoinColumn(name = "fkmenu", referencedColumnName = "idmenu", nullable = false)
     @ManyToOne(optional = false)
     private Tgmenu fkmenu;
     
-    @JoinColumn(name = "rotas", referencedColumnName = "idrota")
+    @JoinColumn(name = "rotas", referencedColumnName = "idrota", nullable = false)
     @ManyToOne
     private Tgrotas rotas;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMenu")
+    @Transient
     private List<Gugmenugrupos> gugmenugruposList;
 
     public Tgmenu() {
@@ -59,7 +60,7 @@ public class Tgmenu implements Serializable {
         this.idmenu = idmenu;
     }
 
-    public Tgmenu(Integer idmenu, short ativo, String descricao) {
+    public Tgmenu(Integer idmenu, int ativo, String descricao) {
         this.idmenu = idmenu;
         this.ativo = ativo;
         this.descricao = descricao;
@@ -73,11 +74,11 @@ public class Tgmenu implements Serializable {
         this.idmenu = idmenu;
     }
 
-    public short getAtivo() {
+    public int getAtivo() {
         return ativo;
     }
 
-    public void setAtivo(short ativo) {
+    public void setAtivo(int ativo) {
         this.ativo = ativo;
     }
 
@@ -97,7 +98,6 @@ public class Tgmenu implements Serializable {
         this.class1 = class1;
     }
 
-    @XmlTransient
     public List<Tgmenu> getTgmenuList() {
         return tgmenuList;
     }
@@ -122,7 +122,6 @@ public class Tgmenu implements Serializable {
         this.rotas = rotas;
     }
 
-    @XmlTransient
     public List<Gugmenugrupos> getGugmenugruposList() {
         return gugmenugruposList;
     }
@@ -152,7 +151,7 @@ public class Tgmenu implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Tgmenu[ idmenu=" + idmenu + " ]";
+        return "entity.Tgmenu[ idmenu=" + idmenu + ", ativo="+ativo+", descricao='"+descricao+"', class1='"+class1+"', rotas="+rotas+" ]";
     }
     
 }
