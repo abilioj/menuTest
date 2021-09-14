@@ -9,12 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-//import br.com.menuTest.domain.MenuNew;
 import br.com.menuTest.domain.Tgmenu;
-import br.com.menuTest.domain.Tgrotas;
 import br.com.menuTest.dto.menu.Icon;
 import br.com.menuTest.dto.menu.Menu;
-//import br.com.menuTest.services.MenuNewService;
 import br.com.menuTest.services.TgmenuService;
 
 @RestController
@@ -23,8 +20,6 @@ public class TgmenuResource {
 	
 	@Autowired
 	private TgmenuService service;
-//	@Autowired
-//	private MenuNewService serviceNew;
 
 	@RequestMapping(method = RequestMethod.GET)
 	private ResponseEntity<List<Menu>> findAll() {
@@ -49,7 +44,6 @@ public class TgmenuResource {
         icon.setClass("fa fa-align-justify");
         icon.setElement("span");
         menu.setIcon(icon);
-        menu.setIconClass(icon.getclass());
         Menu_list.add(menu);
         for (int x = 0; x < tgmenus.size(); x++) {
             Menu_list.add(getSubItem(tgmenus.get(x)));
@@ -62,7 +56,6 @@ public class TgmenuResource {
         HeaderMenuFavoritos.setHidden(false);
         HeaderMenuFavoritos.setHiddenOnCollapse(true);
         HeaderMenuFavoritos.setTitle("Favoritos");
-//        Menu_list.add(HeaderMenuFavoritos);
 		return ResponseEntity.ok().body(Menu_list);
 	}
 
@@ -87,7 +80,6 @@ public class TgmenuResource {
         icon.setClass(tgmenu.getclass());
         icon.setElement("span");
         menu.setIcon(icon);
-        menu.setIconClass(tgmenu.getclass());
         menu.setTitle(tgmenu.getDescricao());
 
         for (int x = 0; x < tgmenu.getTgmenuList().size(); x++) {

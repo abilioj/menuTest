@@ -12,7 +12,6 @@ public class Menu implements Serializable {
     Boolean hiddenOnCollapse;
     private String title;
     private Icon icon;
-    private String iconClass;
     private List<Menu> child;
     private Badge badge = null;
     private boolean hidden;
@@ -56,14 +55,6 @@ public class Menu implements Serializable {
 
 	public void setIcon(Icon icon) {
 		this.icon = icon;
-	}
-
-	public String getIconClass() {
-		return iconClass;
-	}
-
-	public void setIconClass(String iconClass) {
-		this.iconClass = iconClass;
 	}
 
 	public List<Menu> getChild() {
